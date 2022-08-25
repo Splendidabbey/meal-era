@@ -1,29 +1,44 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 1</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 1</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <ExploreContainer name="Tab 1 page" />
+  <base-layout page-title="Random">
+    <ion-content v-if="loading">
+      <div class="loading-center">
+        <ion-spinner color="primary"></ion-spinner>
+      </div>
     </ion-content>
-  </ion-page>
+    <ion-content :fullscreen="true" v-else>
+      <h1>Hello</h1>
+    </ion-content>
+  </base-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+<script>
+import { defineComponent } from 'vue'
+import { IonSpinner, IonContent } from '@ionic/vue'
+import axios from 'axios'
 
 export default  defineComponent({
   name: 'Tab1Page',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
-});
+  components: { IonSpinner, IonContent },
+  data() {
+    return {
+      loading: true
+    }
+  },
+  methods: {
+    hideShow() {
+      this.loading = !this.loading
+    }
+  },
+  
+})
 </script>
+
+<style scoped>
+.loading-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  transform: scale(1.5);
+}
+</style>
