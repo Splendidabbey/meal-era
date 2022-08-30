@@ -9,7 +9,7 @@
       <ion-list>
         <ion-item v-for="ingrident in ingredients" :key="ingrident" @click="() => router.push(`/meal-by-ingredient/${ingrident.strIngredient}`)">
           <ion-avatar slot="start">
-            <img :src="`https://www.themealdb.com/images/ingredients/${ingrident.strIngredient}-Small.png`" />
+            <ion-img :src="`https://www.themealdb.com/images/ingredients/${ingrident.strIngredient}-Small.png`"></ion-img>
           </ion-avatar>
           <ion-label>
             <h1> {{ ingrident.strIngredient }}</h1>
@@ -22,7 +22,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { IonList, IonItem, IonSpinner, IonAvatar, IonLabel } from '@ionic/vue';
+import { IonList, IonItem, IonSpinner, IonAvatar, IonLabel, IonImg } from '@ionic/vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
@@ -43,7 +43,7 @@ export default defineComponent({
       this.loading = false;
     }
   },
-  components: { IonList, IonItem, IonSpinner, IonAvatar, IonLabel },
+  components: { IonList, IonItem, IonSpinner, IonAvatar, IonLabel, IonImg },
   created () {
     setTimeout(this.fetchIngredients, 500);
   },
