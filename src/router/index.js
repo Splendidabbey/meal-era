@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import TabsPage from '../views/TabsPage.vue'
 import IngredientPage from '../views/IngredientPage.vue'
-import TestPage from '../views/TestPage.vue'
+import MealPage from '../views/MealPage.vue'
 
 const routes = [
   {
@@ -13,8 +13,8 @@ const routes = [
     component: IngredientPage
   },
   {
-    path: '/test',
-    component: TestPage
+    path: '/meal/:id',
+    component: MealPage
   },
   {
     path: '/tabs/',

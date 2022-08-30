@@ -8,7 +8,7 @@
         <ion-col size="12" size-sm>
           <ion-card-header>
             <ion-card-subtitle>
-              Category- {{ meal.strCategory }} | From the {{ meal.strArea }}
+              {{ meal.strCategory }} from the {{ meal.strArea }}
             </ion-card-subtitle>
             <ion-title>
               {{ meal.strMeal }}
