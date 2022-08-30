@@ -7,18 +7,18 @@
         </ion-buttons>
         <ion-title>{{ pageTitle}}</ion-title>
         <ion-buttons slot="end">
-          <!-- <slot name="actions-end"></slot> -->
+          <slot name="actions-end"></slot>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <!-- <ion-content> -->
+    <ion-content>
       <slot />
-    <!-- </ion-content> -->
+    </ion-content>
   </ion-page>
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton} from '@ionic/vue'
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonContent} from '@ionic/vue'
 
 export default {
   props: ['pageTitle', 'pageBackLink'],
@@ -29,6 +29,7 @@ export default {
     IonTitle,
     IonButtons,
     IonBackButton,
+    IonContent
   }
 }
 </script>

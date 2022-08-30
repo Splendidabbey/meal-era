@@ -1,35 +1,46 @@
 <template>
-  <base-layout page-title="Random">
-    <ion-content v-if="loading">
+  <base-layout page-title="Random Meal">
+    <template v-if="loading">
       <div class="loading-center">
         <ion-spinner color="primary"></ion-spinner>
       </div>
-    </ion-content>
-    <ion-content :fullscreen="true" v-else>
-      <h1>Hello</h1>
-    </ion-content>
+    </template>
+    <template v-else>
+      <meal-view :meal="randomMeal" />
+    </template>
   </base-layout>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { IonSpinner, IonContent } from '@ionic/vue'
-import axios from 'axios'
+import MealView from '../components/MealView.vue'
+import { IonSpinner } from '@ionic/vue'
+import random from '../test.json'
+// import axios from 'axios'
 
 export default  defineComponent({
   name: 'Tab1Page',
-  components: { IonSpinner, IonContent },
+  components: { IonSpinner, MealView },
   data() {
     return {
-      loading: true
+      loading: true,
+      randomMeal: null
     }
   },
   methods: {
-    hideShow() {
-      this.loading = !this.loading
-    }
+  async fetchRandomMeal () {
+    // const res = await axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
+    // this.randomMeal = res.data.meals[0]
+    // this.loading = false
+
+    this.randomMeal = random.meals[0]
+    console.log(this.randomMeal)
+    this.loading = false
+  }
   },
-  
+  created () {
+    this.fetchRandomMeal()
+  }
 })
 </script>
 
@@ -39,6 +50,8 @@ export default  defineComponent({
   align-items: center;
   justify-content: center;
   height: 90vh;
+}
+ion-spinner {
   transform: scale(1.5);
 }
 </style>
