@@ -12,36 +12,38 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import MealView from '../components/MealView.vue'
-import { IonSpinner } from '@ionic/vue'
-import random from '../test.json'
-// import axios from 'axios'
+import { defineComponent } from "vue";
+import MealView from "../components/MealView.vue";
+import { IonSpinner } from "@ionic/vue";
+// import random from '../test.json'
+import axios from "axios";
 
-export default  defineComponent({
-  name: 'Tab1Page',
+export default defineComponent({
+  name: "Tab1Page",
   components: { IonSpinner, MealView },
   data() {
     return {
       loading: true,
-      randomMeal: null
-    }
+      randomMeal: null,
+    };
   },
   methods: {
-  async fetchRandomMeal () {
-    // const res = await axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
-    // this.randomMeal = res.data.meals[0]
-    // this.loading = false
+    async fetchRandomMeal() {
+      const res = await axios.get(
+        "https://www.themealdb.com/api/json/v1/1/random.php"
+      );
+      this.randomMeal = res.data.meals[0];
+      this.loading = false;
 
-    this.randomMeal = random.meals[0]
-    console.log(this.randomMeal)
-    this.loading = false
-  }
+      // this.randomMeal = random.meals[0]
+      // console.log(this.randomMeal)
+      // this.loading = false
+    },
   },
-  created () {
-    this.fetchRandomMeal()
-  }
-})
+  created() {
+    this.fetchRandomMeal();
+  },
+});
 </script>
 
 <style scoped>

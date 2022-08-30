@@ -9,7 +9,7 @@
         </ion-tab-button>
           
         <ion-tab-button tab="tab2" href="/tabs/tab2">
-          <ion-icon :icon="pint" />
+          <ion-icon :icon="clipboard" />
           <ion-label>By Ingrident</ion-label>
         </ion-tab-button>
         
@@ -25,14 +25,14 @@
 <script>
 import { defineComponent } from 'vue';
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { pint, square, shuffle } from 'ionicons/icons';
+import { clipboard, square, shuffle } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'TabsPage',
   components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
   setup() {
     return {
-      pint, 
+      clipboard, 
       square, 
       shuffle,
     }

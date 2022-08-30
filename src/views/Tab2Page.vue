@@ -7,12 +7,12 @@
     </template>
     <template v-else>
       <ion-list>
-        <ion-item v-for="index in 15" :key="index">
+        <ion-item v-for="ingrident in ingredients" :key="ingrident" @click="() => router.push(`/meal-by-ingredient/${ingrident.strIngredient}`)">
           <ion-avatar slot="start">
-            <img src="">
+            <img :src="`https://www.themealdb.com/images/ingredients/${ingrident.strIngredient}-Small.png`" />
           </ion-avatar>
           <ion-label>
-            <h1>Ginger{{index}}</h1>
+            <h1> {{ ingrident.strIngredient }}</h1>
           </ion-label>
         </ion-item>
       </ion-list>
@@ -23,19 +23,33 @@
 <script>
 import { defineComponent } from 'vue';
 import { IonList, IonItem, IonSpinner, IonAvatar, IonLabel } from '@ionic/vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'Tab2Page',
   data () {
     return {
-      loading:true
+      loading:true,
+      ingredients: []
+    }
+  },
+  methods: {
+    async fetchIngredients () {
+      const res = await axios.get(
+      "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
+      );
+      this.ingredients = res.data.meals
+      this.loading = false;
     }
   },
   components: { IonList, IonItem, IonSpinner, IonAvatar, IonLabel },
   created () {
-    setTimeout(() => {
-      this.loading = false
-    }, 1000);
+    setTimeout(this.fetchIngredients, 500);
+  },
+  setup () {
+    const router = useRouter();
+    return { router };
   }
 });
 </script>
