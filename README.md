@@ -1,13 +1,7 @@
 # Meal Era
-Built with HTML, CSS, and Ionic Vue. A quiz game that assists in learning country capitals, flags, and shortcodes at a go.
+My fun project, Meal era is a web app that generates random meals. You can also search for meals by name and ingredients.
 
-This repository contains renders of all the countries flags in PNG format, gotten from https://hampusborgos.github.io/country-flags/. Country Capitals, shortcode, flags were also taken from Wikipedia and google search results.
-
-The flags are not under copyright protection since flags are in public domain (there may be other restrictions on how the flag can be used though).
-
-I made every effort to maintain the most accurate data for each country, but this data may contain some mistakes and misinterpretations.
-
-Feel free to fork, reuse and make recommendations to this project.
+It's perfect for when you want to come up with something new and interesting for dinner, or if you just want to look at pictures of cool meals.
 
 
 ## Project setup
@@ -23,9 +17,4 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
