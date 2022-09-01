@@ -53,15 +53,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.loading-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90vh;
-}
-ion-spiner {
-  transform: scale(1.5);
-}
-</style>

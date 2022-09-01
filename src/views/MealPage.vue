@@ -6,20 +6,20 @@
       </div>
     </template>
     <template v-else>
-      <meal-view :meal="meal" />
+      <meal-card :meal="meal" />
     </template>
   </base-layout>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import MealView from "../components/MealView.vue";
+import MealCard from "../components/MealCard.vue";
 import { IonSpinner } from "@ionic/vue";
 import axios from "axios";
 
 export default defineComponent({
   name: "Tab1Page",
-  components: { IonSpinner, MealView },
+  components: { IonSpinner, MealCard },
   data() {
     return {
       loading: true,

@@ -1,27 +1,34 @@
 <template>
-  <ion-page>
-    <ion-header>
+  <base-layout page-title="Search">
+    <template v-if="!loading">
+      <div class="loading-center">
+        <ion-spinner color="primary"></ion-spinner>
+      </div>
+    </template>
+    <template v-else>
       <ion-toolbar>
-        <ion-title>Tab 3</ion-title>
+        <ion-searchbar debounce="500" :onIonChange="(e) => fetchSearchResults(e.detail.value)"></ion-searchbar>
       </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 3</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      
-    </ion-content>
-  </ion-page>
+    </template>
+  </base-layout>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonToolbar, IonSearchbar, IonSpinner } from '@ionic/vue';
 
 export default defineComponent({
   name: 'Tab3Page',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  data () {
+    return {
+      loading: true
+    }
+  },
+  components: { IonToolbar, IonSearchbar, IonSpinner },
+  methods: {
+    fetchSearchResults(text) {
+      console.log(text)
+    }
+  }
 });
 </script>

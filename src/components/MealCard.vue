@@ -57,7 +57,7 @@ import {
 } from "@ionic/vue";
 
 export default defineComponent({
-  name: "MealView",
+  name: "MealCard",
   props: ["meal"],
   components: {
     IonCard,
