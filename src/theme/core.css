@@ -2,12 +2,18 @@ ion-toolbar {
   --background: var(--ion-color-primary-tint);
   --color:var(--ion-color-primary-contrast);
 }
+ion-spinner {
+  transform: scale(1.5);
+}
 .loading-center {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 90vh;
 }
-ion-spinner {
-  transform: scale(1.5);
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
 }

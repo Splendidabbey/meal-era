@@ -45,7 +45,7 @@ export default defineComponent({
   },
   components: { IonList, IonItem, IonSpinner, IonAvatar, IonLabel, IonImg },
   created () {
-    setTimeout(this.fetchIngredients, 500);
+    this.fetchIngredients()
   },
   setup () {
     const router = useRouter();

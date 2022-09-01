@@ -1,5 +1,5 @@
 <template>
-  <base-layout page-title="Search By Ingrident">
+  <base-layout :page-title="ingredient ? ingredient : 'loading...'" page-back-link="/tabs/tab2">
     <template v-if="loading">
       <div class="loading-center">
         <ion-spinner color="primary"></ion-spinner>
@@ -43,13 +43,13 @@ export default defineComponent({
     return {
       loading: true,
       lstMeals: [],
+      ingredient: this.$route.params.ingredient
     };
   },
   methods: {
     async fetchIngredientMeals() {
-      const ingredient = this.$route.params.ingredient;
       const res = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
+        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${this.ingredient}`
       );
 
       this.lstMeals = res.data.meals;

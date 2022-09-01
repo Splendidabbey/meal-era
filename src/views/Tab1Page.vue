@@ -1,5 +1,11 @@
 <template>
   <base-layout page-title="Random Meal">
+    <template v-slot:actions-end>
+      <ion-button @click="fetchRandomMeal">
+        <ion-icon slot="icon-only" :icon="refreshOutline">
+        </ion-icon>
+      </ion-button>
+    </template>
     <template v-if="loading">
       <div class="loading-center">
         <ion-spinner color="primary"></ion-spinner>
@@ -17,13 +23,17 @@ import MealCard from "../components/MealCard.vue";
 import { IonSpinner } from "@ionic/vue";
 import axios from "axios";
 
+import { IonButton, IonIcon} from '@ionic/vue'
+import { refreshOutline } from 'ionicons/icons'
+
 export default defineComponent({
   name: "Tab1Page",
-  components: { IonSpinner, MealCard },
+  components: { IonSpinner, MealCard, IonButton, IonIcon },
   data() {
     return {
       loading: true,
       randomMeal: null,
+      refreshOutline
     };
   },
   methods: {

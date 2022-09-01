@@ -1,5 +1,5 @@
 <template>
-  <base-layout :page-title="`${meal.strMeal}`">
+  <base-layout :page-title="meal ? meal.strMeal : 'loading..'" :page-back-link="meal ? `/meal-by-ingredient/${meal.strCategory}` : '/'">
     <template v-if="loading">
       <div class="loading-center">
         <ion-spinner color="primary"></ion-spinner>
@@ -23,14 +23,14 @@ export default defineComponent({
   data() {
     return {
       loading: true,
-      meal: null
+      meal: null,
+      mealId: this.$route.params.id
     };
   },
   methods: {
     async fetchMeal() {
-      const id = this.$route.params.id;
       const res = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.mealId}`
       );
 
       this.meal = res.data.meals[0];
