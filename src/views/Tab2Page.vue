@@ -7,7 +7,7 @@
     </template>
     <template v-else>
       <ion-list>
-        <ion-item v-for="ingrident in ingredients" :key="ingrident" @click="() => router.push(`/meal-by-ingredient/${ingrident.strIngredient}`)">
+        <ion-item v-for="ingrident in ingredients" :key="ingrident" @click="() => router.push(`/meal-by-ingredient/${ingrident.strIngredient}`)" button="true">
           <ion-avatar slot="start">
             <ion-img :src="`https://www.themealdb.com/images/ingredients/${ingrident.strIngredient}-Small.png`"></ion-img>
           </ion-avatar>

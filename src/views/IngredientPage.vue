@@ -11,6 +11,7 @@
           v-for="meal in lstMeals"
           :key="meal"
           @click="() => router.push(`/meal/${meal.idMeal}`)"
+          button="true"
         >
           <ion-avatar slot="start">
             <ion-img :src="[meal.strMealThumb]"></ion-img>
