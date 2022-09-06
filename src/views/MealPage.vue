@@ -1,9 +1,7 @@
 <template>
   <base-layout :page-title="meal ? meal.strMeal : 'loading..'" :page-back-link="meal ? `/meal-by-ingredient/${meal.strCategory}` : '/'">
     <template v-if="loading">
-      <div class="loading-center">
-        <ion-spinner color="primary"></ion-spinner>
-      </div>
+      <meal-card-loading />
     </template>
     <template v-else>
       <meal-card :meal="meal" />
@@ -14,12 +12,13 @@
 <script>
 import { defineComponent } from "vue";
 import MealCard from "../components/MealCard.vue";
-import { IonSpinner } from "@ionic/vue";
+import MealCardLoading from "../components/MealCardLoading.vue";
+import {  } from "@ionic/vue";
 import axios from "axios";
 
 export default defineComponent({
   name: "Tab1Page",
-  components: { IonSpinner, MealCard },
+  components: { MealCard, MealCardLoading },
   data() {
     return {
       loading: true,

@@ -35,13 +35,19 @@ export default defineComponent({
   components: { IonToolbar, IonSearchbar, IonLabel, IonSpinner, MealCard },
   methods: {
     async fetchSearchResults(request) {
-      this.loading = true
-      const res = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${request}`
-      );
+      if (request.length <= 0) {
+        this.lstMeals = null
+        this.getResult = true
+      } else {
+        this.lstMeals = []
+        this.loading = true
+        const res = await axios.get(
+          `https://www.themealdb.com/api/json/v1/1/search.php?s=${request}`
+        );
+        this.lstMeals = res.data.meals;
+        this.getResult = true
+      }
 
-      this.lstMeals = res.data.meals;
-      this.getResult = true
       this.loading = false
     }
   }

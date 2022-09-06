@@ -1,9 +1,7 @@
 <template>
   <base-layout page-title="Search By Ingrident">
     <template v-if="loading">
-      <div class="loading-center">
-        <ion-spinner color="primary"></ion-spinner>
-      </div>
+      <list-card-loading />
     </template>
     <template v-else>
       <ion-list>
@@ -22,7 +20,8 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { IonList, IonItem, IonSpinner, IonAvatar, IonLabel, IonImg } from '@ionic/vue';
+import { IonList, IonItem, IonAvatar, IonLabel, IonImg } from '@ionic/vue';
+import ListCardLoading from '../components/ListCardLoading.vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
@@ -43,7 +42,7 @@ export default defineComponent({
       this.loading = false;
     }
   },
-  components: { IonList, IonItem, IonSpinner, IonAvatar, IonLabel, IonImg },
+  components: { IonList, IonItem, IonAvatar, IonLabel, IonImg, ListCardLoading },
   created () {
     this.fetchIngredients()
   },

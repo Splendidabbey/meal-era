@@ -1,9 +1,7 @@
 <template>
   <base-layout :page-title="ingredient ? ingredient : 'loading...'" page-back-link="/tabs/tab2">
     <template v-if="loading">
-      <div class="loading-center">
-        <ion-spinner color="primary"></ion-spinner>
-      </div>
+      <list-card-loading />
     </template>
     <template v-else>
       <ion-list>
@@ -30,13 +28,13 @@ import { defineComponent } from "vue";
 import {
   IonList,
   IonItem,
-  IonSpinner,
   IonAvatar,
   IonLabel,
   IonImg,
 } from "@ionic/vue";
 import axios from "axios";
 import { useRouter, useRoute } from "vue-router";
+import ListCardLoading from "../components/ListCardLoading.vue";
 
 export default defineComponent({
   name: "Tab2Page",
@@ -57,7 +55,7 @@ export default defineComponent({
       this.loading = false;
     },
   },
-  components: { IonList, IonItem, IonSpinner, IonAvatar, IonLabel, IonImg },
+  components: { IonList, IonItem, IonAvatar, IonLabel, IonImg, ListCardLoading },
   created() {
     setTimeout(this.fetchIngredientMeals, 500);
   },
